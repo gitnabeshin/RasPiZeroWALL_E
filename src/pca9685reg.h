@@ -1,46 +1,39 @@
-//
-//  pca9685reg.h
-//  I2C_PCA9685_Servo_Control
-//
-//  Created by 渡辺 紳一郎 on 2017/06/22.
-//  Copyright © 2017年 渡辺 紳一郎. All rights reserved.
-//
 
 /**
  http://wiringpi.com/reference/i2c-library/
  -------------------------------------------------------------------------
  WiringPi includes a library which can make it easier to use the Raspberry Pi’s on-board I2C interface.
- 
+
  Before you can use the I2C interface, you may need to use the gpio utility to load the I2C drivers into the kernel:
- 
+
  > gpio load i2c
- 
+
  If you need a baud rate other than the default 100Kbps, then you can supply this on the command-line:
- 
+
  > gpio load i2c 1000
- 
+
  will set the baud rate to 1000Kbps – ie. 1,000,000 bps. (K here is times 1000)
  To use the I2C library, you need to:
- 
+
  > #include <wiringPiI2C.h>
- 
+
  in your program. Programs need to be linked with -lwiringPi as usual.
  You can still use the standard system commands to check the I2C devices, and I recommend you do so
  – e.g. the i2cdetect program. Just remember that on a Rev 1 Raspberry pi it’s device 0,
  and on a Rev. 2 it’s device 1. e.g.
- 
+
  > i2cdetect -y 0 # Rev 1
  > i2cdetect -y 1 # Rev 2
- 
+
  Note that you can use the gpio command to run the i2cdetect command for you with the correct
  parameters for your board revision:
- 
+
  > gpio i2cdetect
- 
+
  ------------------------------------------------------
  > sudo raspi-config
    --> Interfacing Options --> I2C enable
- 
+
  pi@raspberrypi:~/work/i2c_servo $ sudo i2cdetect -y 1
  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
  00:          -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -52,13 +45,12 @@
  60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
  70: 70 -- -- -- -- -- -- --
  pi@raspberrypi:~/work/i2c_servo $
- 
+
  ------------------------------------------------------
- 
+
  is all that’s needed.
  -------------------------------------------------------------------------
  */
-
 
 #ifndef pca9685reg_h
 
@@ -101,11 +93,10 @@
 #define MODE2_OUTNE_1 0x02
 #define MODE2_OUTNE_0 0x01
 
-//内蔵クロック周波数 25MHz
+// 内蔵クロック周波数 25MHz
 #define OSC_CLOCK 25000000.0f
-//周波数分解能(0-4096)
+// 周波数分解能(0-4096)
 #define PRESCALE_DIVIDER 4096.0f
-
 
 #define pca9685reg_h
 
